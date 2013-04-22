@@ -12,7 +12,7 @@ use Ephp\WsBundle\Form\Config\ServiceType;
 /**
  * Config\Service controller.
  *
- * @Route("/admin/service")
+ * @Route("/service")
  */
 class ServiceController extends Controller
 {
@@ -26,7 +26,7 @@ class ServiceController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('EphpWsInvokerBundle:Config\Service')->findAll();
+        $entities = $em->getRepository('EphpWsBundle:Config\Service')->findAll();
 
         return array('entities' => $entities);
     }
@@ -41,7 +41,7 @@ class ServiceController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Service')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Service')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Service entity.');
@@ -76,7 +76,7 @@ class ServiceController extends Controller
      *
      * @Route("/create", name="admin_service_create")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Config\Service:new.html.twig")
+     * @Template("EphpWsBundle:Config\Service:new.html.twig")
      */
     public function createAction()
     {
@@ -110,7 +110,7 @@ class ServiceController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Service')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Service')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Service entity.');
@@ -131,13 +131,13 @@ class ServiceController extends Controller
      *
      * @Route("/{id}/update", name="admin_service_update")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Config\Service:edit.html.twig")
+     * @Template("EphpWsBundle:Config\Service:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Service')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Service')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Service entity.');
@@ -179,7 +179,7 @@ class ServiceController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('EphpWsInvokerBundle:Config\Service')->find($id);
+            $entity = $em->getRepository('EphpWsBundle:Config\Service')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Config\Service entity.');

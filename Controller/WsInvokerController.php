@@ -13,7 +13,7 @@ use Ephp\WsBundle\Entity\Log\LogAuthentication;
 use Ephp\WsBundle\Entity\Log\LogCall;
 
 /**
- * @Route("/ws_invoker")
+ * @Route("/invoker")
  */
 class WsInvokerController extends Controller {
 
@@ -352,7 +352,7 @@ class WsInvokerController extends Controller {
 
     /**
      * @Route("/help", name="help_root")
-     * @Template("EphpWsInvokerBundle:WsInvoker:help.html.twig")
+     * @Template("EphpWsBundle:WsInvoker:help.html.twig")
      */
     public function helpRootAction() {
         return array('services' => array(), 'group' => '- Manualistica');
@@ -360,7 +360,7 @@ class WsInvokerController extends Controller {
 
     /**
      * @Route("/help/{group_name}", name="help")
-     * @Template("EphpWsInvokerBundle:WsInvoker:help.html.twig")
+     * @Template("EphpWsBundle:WsInvoker:help.html.twig")
      */
     public function helpAction($group_name) {
         try {
@@ -378,7 +378,7 @@ class WsInvokerController extends Controller {
 
     /**
      * @Route("help/service/{service_name}", name="help_service")
-     * @Template("EphpWsInvokerBundle:WsInvoker:helpService.html.twig")
+     * @Template("EphpWsBundle:WsInvoker:helpService.html.twig")
      */
     public function helpServiceAction($service_name) {
         try {
@@ -394,7 +394,7 @@ class WsInvokerController extends Controller {
 
     /**
      * @Route("/analyze", name="analyze_root")
-     * @Template("EphpWsInvokerBundle:WsInvoker:analyze.html.twig")
+     * @Template("EphpWsBundle:WsInvoker:analyze.html.twig")
      */
     public function analyzeAction() {
         try {
@@ -410,7 +410,7 @@ class WsInvokerController extends Controller {
 
     /**
      * @Route("/analyze/{session_id}", name="analyze_session")
-     * @Template("EphpWsInvokerBundle:WsInvoker:analyzeSession.html.twig")
+     * @Template("EphpWsBundle:WsInvoker:analyzeSession.html.twig")
      */
     public function analyzeSessionAction($session_id) {
         try {

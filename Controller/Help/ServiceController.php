@@ -12,7 +12,7 @@ use Ephp\WsBundle\Form\Help\ServiceType;
 /**
  * Help\Service controller.
  *
- * @Route("/admin/help")
+ * @Route("/help/service")
  */
 class ServiceController extends Controller
 {
@@ -26,7 +26,7 @@ class ServiceController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('EphpWsInvokerBundle:Help\Service')->findAll();
+        $entities = $em->getRepository('EphpWsBundle:Help\Service')->findAll();
 
         return array('entities' => $entities);
     }
@@ -41,7 +41,7 @@ class ServiceController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\Service')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\Service')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\Service entity.');
@@ -76,7 +76,7 @@ class ServiceController extends Controller
      *
      * @Route("/create", name="admin_help_create")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Help\Service:new.html.twig")
+     * @Template("EphpWsBundle:Help\Service:new.html.twig")
      */
     public function createAction()
     {
@@ -110,7 +110,7 @@ class ServiceController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\Service')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\Service')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\Service entity.');
@@ -131,13 +131,13 @@ class ServiceController extends Controller
      *
      * @Route("/{id}/update", name="admin_help_update")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Help\Service:edit.html.twig")
+     * @Template("EphpWsBundle:Help\Service:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\Service')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\Service')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\Service entity.');
@@ -180,7 +180,7 @@ class ServiceController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('EphpWsInvokerBundle:Help\Service')->find($id);
+            $entity = $em->getRepository('EphpWsBundle:Help\Service')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Help\Service entity.');

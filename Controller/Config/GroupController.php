@@ -12,7 +12,7 @@ use Ephp\WsBundle\Form\Config\GroupType;
 /**
  * Config\Group controller.
  *
- * @Route("/admin/group")
+ * @Route("/group")
  */
 class GroupController extends Controller
 {
@@ -26,7 +26,7 @@ class GroupController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('EphpWsInvokerBundle:Config\Group')->findAll();
+        $entities = $em->getRepository('EphpWsBundle:Config\Group')->findAll();
 
         return array('entities' => $entities);
     }
@@ -41,7 +41,7 @@ class GroupController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Group')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Group')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Group entity.');
@@ -76,7 +76,7 @@ class GroupController extends Controller
      *
      * @Route("/create", name="admin_group_create")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Config\Group:new.html.twig")
+     * @Template("EphpWsBundle:Config\Group:new.html.twig")
      */
     public function createAction()
     {
@@ -110,7 +110,7 @@ class GroupController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Group')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Group')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Group entity.');
@@ -131,13 +131,13 @@ class GroupController extends Controller
      *
      * @Route("/{id}/update", name="admin_group_update")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Config\Group:edit.html.twig")
+     * @Template("EphpWsBundle:Config\Group:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Group')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Group')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Group entity.');
@@ -179,7 +179,7 @@ class GroupController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('EphpWsInvokerBundle:Config\Group')->find($id);
+            $entity = $em->getRepository('EphpWsBundle:Config\Group')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Config\Group entity.');

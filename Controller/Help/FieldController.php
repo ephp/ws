@@ -12,7 +12,7 @@ use Ephp\WsBundle\Form\Help\FieldType;
 /**
  * Help\Field controller.
  *
- * @Route("/admin/fields")
+ * @Route("/help/fields")
  */
 class FieldController extends Controller
 {
@@ -26,7 +26,7 @@ class FieldController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('EphpWsInvokerBundle:Help\Field')->findBy(array('service_name' => $service));
+        $entities = $em->getRepository('EphpWsBundle:Help\Field')->findBy(array('service_name' => $service));
 
         return array('entities' => $entities);
     }
@@ -41,7 +41,7 @@ class FieldController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\Field')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\Field')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\Field entity.');
@@ -76,7 +76,7 @@ class FieldController extends Controller
      *
      * @Route("/create", name="admin_help_field_create")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Help\Field:new.html.twig")
+     * @Template("EphpWsBundle:Help\Field:new.html.twig")
      */
     public function createAction()
     {
@@ -110,7 +110,7 @@ class FieldController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\Field')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\Field')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\Field entity.');
@@ -131,13 +131,13 @@ class FieldController extends Controller
      *
      * @Route("/{id}/update", name="admin_help_field_update")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Help\Field:edit.html.twig")
+     * @Template("EphpWsBundle:Help\Field:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\Field')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\Field')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\Field entity.');
@@ -179,7 +179,7 @@ class FieldController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('EphpWsInvokerBundle:Help\Field')->find($id);
+            $entity = $em->getRepository('EphpWsBundle:Help\Field')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Help\Field entity.');

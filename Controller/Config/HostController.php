@@ -12,7 +12,7 @@ use Ephp\WsBundle\Form\Config\HostType;
 /**
  * Config\Host controller.
  *
- * @Route("/admin/host")
+ * @Route("/host")
  */
 class HostController extends Controller
 {
@@ -26,7 +26,7 @@ class HostController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('EphpWsInvokerBundle:Config\Host')->findAll();
+        $entities = $em->getRepository('EphpWsBundle:Config\Host')->findAll();
 
         return array('entities' => $entities);
     }
@@ -41,7 +41,7 @@ class HostController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Host')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Host')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Host entity.');
@@ -76,7 +76,7 @@ class HostController extends Controller
      *
      * @Route("/create", name="admin_host_create")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Config\Host:new.html.twig")
+     * @Template("EphpWsBundle:Config\Host:new.html.twig")
      */
     public function createAction()
     {
@@ -110,7 +110,7 @@ class HostController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Host')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Host')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Host entity.');
@@ -131,13 +131,13 @@ class HostController extends Controller
      *
      * @Route("/{id}/update", name="admin_host_update")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Config\Host:edit.html.twig")
+     * @Template("EphpWsBundle:Config\Host:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Config\Host')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Config\Host')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Config\Host entity.');
@@ -179,7 +179,7 @@ class HostController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('EphpWsInvokerBundle:Config\Host')->find($id);
+            $entity = $em->getRepository('EphpWsBundle:Config\Host')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Config\Host entity.');

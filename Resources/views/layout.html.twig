@@ -1,8 +1,47 @@
-{% extends 'BringOutWebBundle::admin.html.twig' %}
-
-{% block title %}BringOut - Admin{% endblock %}
-
-{% block content %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <!-- ottimizzazione layout smartphone -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        {% include ":parts:javascript.html.twig" %}
+        {% include ":parts:stylesheets.html.twig" %}
+        {% block javascript %}{% endblock %}
+        <script type="text/javascript">
+            <!--
+            var ac_target = '#baloon-login > section';
+            var ut_target = '#baloon-user-tools > section';
+            var db_target = '#baloon-dashboard-tools > section';
+            var ru_target = '#baloon-contact-tools > section';
+            
+            {#% include 'ESWebBundle::routes.js.twig' %#}
+            
+            {% block javascript_inline %}{% endblock %}
+                
+            $(document).ready(function() {
+                //$.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+                {% block javascript_ready %}{% endblock %}
+            });
+            // -->
+        </script>
+        {% block fix_ie %}{% include ':parts:ie_fixer.html.twig' %}{% endblock %}
+        <style type="text/css">
+            .clearfix:after {
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+        {% block css_inline %}{% endblock %}
+        </style>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="{% block bodyclass %}{% endblock %}" onload="{% block onload %}{% endblock %}">
+    {% block header %}
         <nav class="hmenu">
             <ul>
                 <li><a href="{{ path('analyze_root') }}">Analisi Log</a></li>
@@ -12,8 +51,14 @@
                 <li><a href="{{ path('admin_help') }}">Admin Help</a></li>
             </ul>
         </nav>
-    <div class="admincontent">
-            {% block admin_content %}
-            {% endblock %}
-    </div>
-{% endblock %}
+    {% endblock %}
+    <section id="content_large" class="{% block content_css %}{% endblock %} clearfix">
+        <div class="admincontent">
+            {% block admin_content %}{% endblock %}
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+    {% include ':parts:footer/index.html.twig' %}
+    {% block javascript_footer %}{% endblock %}
+    </body>
+</html>

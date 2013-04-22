@@ -26,7 +26,7 @@ class OutFieldController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('EphpWsInvokerBundle:Help\OutField')->findBy(array('service_name' => $service));
+        $entities = $em->getRepository('EphpWsBundle:Help\OutField')->findBy(array('service_name' => $service));
 
         return array('entities' => $entities);
     }
@@ -41,7 +41,7 @@ class OutFieldController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\OutField')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\OutField')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\OutField entity.');
@@ -76,7 +76,7 @@ class OutFieldController extends Controller
      *
      * @Route("/create", name="admin_help_output_create")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Help\OutField:new.html.twig")
+     * @Template("EphpWsBundle:Help\OutField:new.html.twig")
      */
     public function createAction()
     {
@@ -110,7 +110,7 @@ class OutFieldController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\OutField')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\OutField')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\OutField entity.');
@@ -131,13 +131,13 @@ class OutFieldController extends Controller
      *
      * @Route("/{id}/update", name="admin_help_output_update")
      * @Method("post")
-     * @Template("EphpWsInvokerBundle:Help\OutField:edit.html.twig")
+     * @Template("EphpWsBundle:Help\OutField:edit.html.twig")
      */
     public function updateAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entity = $em->getRepository('EphpWsInvokerBundle:Help\OutField')->find($id);
+        $entity = $em->getRepository('EphpWsBundle:Help\OutField')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Help\OutField entity.');
@@ -179,7 +179,7 @@ class OutFieldController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
-            $entity = $em->getRepository('EphpWsInvokerBundle:Help\OutField')->find($id);
+            $entity = $em->getRepository('EphpWsBundle:Help\OutField')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Help\OutField entity.');
