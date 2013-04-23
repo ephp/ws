@@ -93,7 +93,7 @@ class WsInvokerController extends Controller {
             $service->setLastCallAt(new \DateTime());
             $host->setLastCallAt(new \DateTime());
 
-            $url = $this->replaceMarkup($service->getUrl($this->container->getParameter('running_mode') == 'prod'), $params, false);
+            $url = $this->replaceMarkup($service->getUrl($this->container->getParameter('running_mode') == 'prod'), $params);
 
             // Log della request
             $log_request->setCall($call);
@@ -219,10 +219,10 @@ class WsInvokerController extends Controller {
             curl_setopt($this->ch, CURLOPT_PROXYTYPE, $this->container->getParameter('proxy.ip'));
             curl_setopt($this->ch, CURLOPT_PROXYUSERPWD, $this->container->getParameter('proxy.ip'));
         }
-        $header = explode("\n", $this->replaceMarkup($service->getHeader(), $params, false));
+        $header = explode("\n", $this->replaceMarkup($service->getHeader(), $params));
 
         if ($service->getMethod() == 'POST' || $service->getMethod() == 'PUT') {
-            $data = $this->replaceMarkup($service->getDataBody(), $params, false);
+            $data = $this->replaceMarkup($service->getDataBody(), $params);
             curl_setopt($this->ch, CURLOPT_POST, 1);
             curl_setopt($this->ch, CURLOPT_POSTFIELDS, $data);
             switch(strtoupper($service->getDataType())) {
@@ -441,7 +441,7 @@ class WsInvokerController extends Controller {
 ";
     }
 
-    protected function replaceMarkup($string, array $params, $xml = true, $empty_tag = true) {
+    protected function replaceMarkup($string, array $params, $xml = false, $empty_tag = true) {
         foreach ($params as $key => $value) {
             if ($value !== null || !$empty_tag) {
                 $string = str_replace("%{$key}%", $value ? : '', $string);
