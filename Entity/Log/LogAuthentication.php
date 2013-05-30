@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ephp\WsBundle\Entity\Log\LogAuthentication
  *
- * @ORM\Table(name="ws_log_authentication", indexes={@ORM\index(name="user_idx", columns={"username"}),@ORM\index(name="expired_idx", columns={"expired_at"}),@ORM\index(name="expired_user_idx", columns={"username","expired_at"})}, uniqueConstraints={@ORM\UniqueConstraint(name="token_idx", columns={"token"})})
+ * @ORM\Table(name="ws_log_authentication", indexes={@ORM\Index(name="user_idx", columns={"username"}),@ORM\Index(name="expired_idx", columns={"expired_at"}),@ORM\Index(name="expired_user_idx", columns={"username","expired_at"})}, uniqueConstraints={@ORM\UniqueConstraint(name="token_idx", columns={"token"})})
  * @ORM\Entity(repositoryClass="Ephp\WsBundle\Entity\Log\LogAuthenticationRepository")
  */
 class LogAuthentication
